@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="H2 - stap-data" uuid="c63340e2-014c-40bf-8a19-600772c55b00">
+    <database-info product="H2" version="1.4.192 (2016-05-26)" jdbc-version="4.0" driver-name="H2 JDBC Driver" driver-version="1.4.192 (2016-05-26)">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
+    <schema name="PUBLIC" catalog="STAP-DATA"/>
+    <table name="EXECUTION" schema="PUBLIC" catalog="STAP-DATA" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfQ0Y5NTU5NTFfOTYwNV80N0M1X0I5QzdfMDkwMjYxNTExNTdFKQ==" autoIncrement="true"/>
+      <column name="END_TIME" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="REMARK" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="RESULT" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="START_TIME" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="STATUS" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EXECUTION_CONTEXT_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="EXECUTION_PLAN_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="TEST_CASE_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="CONSTRAINT_65" columns="ID"/>
+      <foreign-key name="FKH59O2CX8LAR7TXXQ6UL3DLVPA" columns="EXECUTION_CONTEXT_ID" ref-table="EXECUTION_CONTEXT" ref-schema="PUBLIC" ref-catalog="STAP-DATA" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <foreign-key name="FKT095JDM74J09IEB2OY251NX0N" columns="EXECUTION_PLAN_ID" ref-table="EXECUTION_PLAN" ref-schema="PUBLIC" ref-catalog="STAP-DATA" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <foreign-key name="FKE84Q50QJIGNYB6XYKVVWV6YP2" columns="TEST_CASE_ID" ref-table="TEST_CASE" ref-schema="PUBLIC" ref-catalog="STAP-DATA" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="FKE84Q50QJIGNYB6XYKVVWV6YP2_INDEX_6" unique="false" columns="TEST_CASE_ID"/>
+      <index name="FKH59O2CX8LAR7TXXQ6UL3DLVPA_INDEX_6" unique="false" columns="EXECUTION_CONTEXT_ID"/>
+      <index name="FKT095JDM74J09IEB2OY251NX0N_INDEX_6" unique="false" columns="EXECUTION_PLAN_ID"/>
+    </table>
+    <table name="EXECUTION_CONTEXT" schema="PUBLIC" catalog="STAP-DATA" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfRDNCNjEwMkRfQTRDQ180ODMwXzg2NzRfMTExNDFCODA2NzExKQ==" autoIncrement="true"/>
+      <column name="CONTENT" sqlType="VARCHAR" precision="1000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LAST_UPDATE" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="CONSTRAINT_4" columns="ID"/>
+    </table>
+    <table name="EXECUTION_LOG" schema="PUBLIC" catalog="STAP-DATA" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfOUVCNzMxMkRfOTgxN180MTUxX0JGNzBfMTRCMDg5RjYwNEMzKQ==" autoIncrement="true"/>
+      <column name="CONTENT" sqlType="VARCHAR" precision="1000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LEVEL" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TIME" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="EXECUTION_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="CONSTRAINT_F" columns="ID"/>
+      <foreign-key name="FKDBUT9Q1PIV64YWMI7TL2GHDR1" columns="EXECUTION_ID" ref-table="EXECUTION" ref-schema="PUBLIC" ref-catalog="STAP-DATA" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="FKDBUT9Q1PIV64YWMI7TL2GHDR1_INDEX_F" unique="false" columns="EXECUTION_ID"/>
+    </table>
+    <table name="EXECUTION_OUTPUT_FILE" schema="PUBLIC" catalog="STAP-DATA" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfM0M1MTRDMjVfRjI0N180RTM4Xzg5REFfNjJGNEM2QkU5OTYyKQ==" autoIncrement="true"/>
+      <column name="CONTENT" sqlType="BLOB" precision="2147483647" scale="0" nullable="true" jdbcType="2004"/>
+      <column name="LAST_UPDATE" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="REMARK" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TYPE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EXECUTION_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="CONSTRAINT_D" columns="ID"/>
+      <foreign-key name="FK1Y0RPRR6KJ0Q0UP7CCDH4OEJW" columns="EXECUTION_ID" ref-table="EXECUTION" ref-schema="PUBLIC" ref-catalog="STAP-DATA" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="FK1Y0RPRR6KJ0Q0UP7CCDH4OEJW_INDEX_D" unique="false" columns="EXECUTION_ID"/>
+    </table>
+    <table name="EXECUTION_OUTPUT_TEXT" schema="PUBLIC" catalog="STAP-DATA" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfMjA1QTdGN0JfQUMwQ180ODE0X0E4RDlfNzA2NURBQzUxNDFBKQ==" autoIncrement="true"/>
+      <column name="FIELD" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LAST_UPDATE" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="REMARK" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TYPE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EXECUTION_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="CONSTRAINT_DD" columns="ID"/>
+      <foreign-key name="FK3FKD6DHSLFD2EGADJ0156XY03" columns="EXECUTION_ID" ref-table="EXECUTION" ref-schema="PUBLIC" ref-catalog="STAP-DATA" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="FK3FKD6DHSLFD2EGADJ0156XY03_INDEX_D" unique="false" columns="EXECUTION_ID"/>
+    </table>
+    <table name="EXECUTION_PLAN" schema="PUBLIC" catalog="STAP-DATA" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfOTFFOEMxQzRfREM2NV80RkI5Xzk1RDBfMzFBMzNENTkyQkE0KQ==" autoIncrement="true"/>
+      <column name="DESCRIPTION" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LAST_UPDATE" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="STATUS" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="CONSTRAINT_2" columns="ID"/>
+    </table>
+    <table name="EXECUTION_PLAN_META" schema="PUBLIC" catalog="STAP-DATA" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfQUNBOEVBMzNfQkZDNl80QUIyX0IyQ0RfQ0NFRERDN0REOUMwKQ==" autoIncrement="true"/>
+      <column name="LAST_UPDATE" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="META_KEY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="META_TYPE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="META_VALUE" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EXECUTION_PLAN_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="CONSTRAINT_47" columns="ID"/>
+      <foreign-key name="FKI9AB6YKNU1TBECQWBXULD72OL" columns="EXECUTION_PLAN_ID" ref-table="EXECUTION_PLAN" ref-schema="PUBLIC" ref-catalog="STAP-DATA" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="FKI9AB6YKNU1TBECQWBXULD72OL_INDEX_4" unique="false" columns="EXECUTION_PLAN_ID"/>
+    </table>
+    <table name="TEST_CASE" schema="PUBLIC" catalog="STAP-DATA" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfOTYyNkI0NzNfMDY4M180QkJCX0FBOUVfOUI4MjY2MEVEQjRGKQ==" autoIncrement="true"/>
+      <column name="CREATED_TIME" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="DESCRIPTION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LAST_UPDATE" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="STATUS" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="CONSTRAINT_6" columns="ID"/>
+      <index name="UK_E9SSTGD6333DVT8RWXAM6Q633_INDEX_6" unique="true" columns="NAME"/>
+    </table>
+    <table name="TEST_CASE_META" schema="PUBLIC" catalog="STAP-DATA" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfMzFDMkU2RUJfRkMxRl80NzJCXzg5NTBfMTQxRkQ1NkI2NjhEKQ==" autoIncrement="true"/>
+      <column name="LAST_UPDATE" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="META_KEY" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="META_TYPE" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="META_VALUE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TEST_CASE_ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="CONSTRAINT_3" columns="ID"/>
+      <foreign-key name="FKMBTO2M8IK4KKWYOBT4GWCVN76" columns="TEST_CASE_ID" ref-table="TEST_CASE" ref-schema="PUBLIC" ref-catalog="STAP-DATA" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="FKMBTO2M8IK4KKWYOBT4GWCVN76_INDEX_3" unique="false" columns="TEST_CASE_ID"/>
+    </table>
+    <table name="TEST_CASE_RELATION" schema="PUBLIC" catalog="STAP-DATA" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfRTdDOTY0NjJfOUM4MF80RjExX0JCQzNfNzU1RDBFRTc4RTBDKQ==" autoIncrement="true"/>
+      <column name="RELATION" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="REMARK" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="RELATED_TEST_CASE_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="TEST_CASE_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="CONSTRAINT_3E" columns="ID"/>
+      <foreign-key name="FKDPO7R61X3CIUP8WC6S267LRM4" columns="TEST_CASE_ID" ref-table="TEST_CASE" ref-schema="PUBLIC" ref-catalog="STAP-DATA" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <foreign-key name="FKL10F159TSN45JYHT1GRQTNMGQ" columns="RELATED_TEST_CASE_ID" ref-table="TEST_CASE" ref-schema="PUBLIC" ref-catalog="STAP-DATA" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="FKDPO7R61X3CIUP8WC6S267LRM4_INDEX_3" unique="false" columns="TEST_CASE_ID"/>
+      <index name="FKL10F159TSN45JYHT1GRQTNMGQ_INDEX_3" unique="false" columns="RELATED_TEST_CASE_ID"/>
+    </table>
+    <table name="TEST_DATA" schema="PUBLIC" catalog="STAP-DATA" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfNTZCNEU2QjFfNTUyRl80NUY3Xzk5RTVfQzAyMkM1ODE0RjA1KQ==" autoIncrement="true"/>
+      <column name="TEST_CASE_ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="TEST_DATA_DEFINITION_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="CONSTRAINT_61" columns="ID"/>
+      <foreign-key name="FKPWWM97GTNPSS6NDT0GVD747KO" columns="TEST_CASE_ID" ref-table="TEST_CASE" ref-schema="PUBLIC" ref-catalog="STAP-DATA" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <foreign-key name="FK9POLLP1KKTG4LTAL6VMYQE98V" columns="TEST_DATA_DEFINITION_ID" ref-table="TEST_DATA_DEFINITION" ref-schema="PUBLIC" ref-catalog="STAP-DATA" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="FK9POLLP1KKTG4LTAL6VMYQE98V_INDEX_6" unique="false" columns="TEST_DATA_DEFINITION_ID"/>
+      <index name="FKPWWM97GTNPSS6NDT0GVD747KO_INDEX_6" unique="false" columns="TEST_CASE_ID"/>
+    </table>
+    <table name="TEST_DATA_DEFINITION" schema="PUBLIC" catalog="STAP-DATA" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfQzMzNzBDMkNfQTc5Rl80QkI4XzhBNzlfQTBDMUQyMTE0RUMxKQ==" autoIncrement="true"/>
+      <column name="FIELD" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LAST_UPDATE" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="REMARK" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TYPE" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="VALUE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="CONSTRAINT_E" columns="ID"/>
+    </table>
+    <table name="TEST_OPERATION" schema="PUBLIC" catalog="STAP-DATA" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfNkFFMDkwREFfN0M5Nl80Q0E4XzgzNDJfNDY2RDM3NkFDNjM1KQ==" autoIncrement="true"/>
+      <column name="LAST_UPDATE" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="OPERATOR" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="REMARK" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="CONSTRAINT_7" columns="ID"/>
+    </table>
+    <table name="TEST_STEP" schema="PUBLIC" catalog="STAP-DATA" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfMzhCQTYzOEFfMzIyMF80MTRFX0FFNjRfMzJGOTEwOTMyNzUzKQ==" autoIncrement="true"/>
+      <column name="PARAMETER" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="STEP_ORDER" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="TEST_CASE_ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="TEST_OPERATION_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="CONSTRAINT_618" columns="ID"/>
+      <foreign-key name="FKRYHO29LS1SIY50S2FSJVL82E0" columns="TEST_CASE_ID" ref-table="TEST_CASE" ref-schema="PUBLIC" ref-catalog="STAP-DATA" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <foreign-key name="FK78VG9X7A1IMR16KCFLRTIDP37" columns="TEST_OPERATION_ID" ref-table="TEST_OPERATION" ref-schema="PUBLIC" ref-catalog="STAP-DATA" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="FK78VG9X7A1IMR16KCFLRTIDP37_INDEX_6" unique="false" columns="TEST_OPERATION_ID"/>
+      <index name="FKRYHO29LS1SIY50S2FSJVL82E0_INDEX_6" unique="false" columns="TEST_CASE_ID"/>
+    </table>
+  </data-source>
+</component>
